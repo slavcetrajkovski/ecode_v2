@@ -31,7 +31,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Сликата е зачувана");
+      toast.success("Сликата е успешно зачувана");
       toggleEdit();
       router.refresh();
     } catch (error) {

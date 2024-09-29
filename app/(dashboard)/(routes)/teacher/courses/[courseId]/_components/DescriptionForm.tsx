@@ -50,7 +50,7 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Описот е зачуван");
+      toast.success("Описот е успешно зачуван");
       toggleEdit();
       router.refresh();
     } catch (error) {
@@ -82,7 +82,7 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
             !initialData.description && "text-slate-500 italic"
           )}
         >
-          {initialData.description || "Моментално курсот нема опис"}
+          {initialData.description || "Моментално нема опис"}
         </p>
       )}
       {isEditing && (

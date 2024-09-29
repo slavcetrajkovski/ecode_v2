@@ -50,7 +50,7 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
         await axios.patch(`/api/courses/${courseId}`, values);
-        toast.success("Насловот е зачуван")
+        toast.success("Насловот е успешно зачуван")
         toggleEdit();
         router.refresh();
     } catch(error) {
