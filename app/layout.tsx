@@ -3,6 +3,7 @@ import "./globals.css";
 import { Roboto_Condensed } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import ToasterProvider from "@/components/providers/ToasterProvider";
+import { ConfettiProvider } from "@/components/providers/ConfettiProvider";
 
 const inter = Roboto_Condensed({ subsets: ["latin"], weight: "500" });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
+          <ConfettiProvider />
           <ToasterProvider />
           {children}
         </body>
