@@ -26,26 +26,25 @@ export async function POST(
     }
 
     const lastChapter = await database.chapter.findFirst({
-        where: {
-            courseId: params.courseId,
-        },
-        orderBy: {
-            position: "desc",
-        },
+      where: {
+        courseId: params.courseId,
+      },
+      orderBy: {
+        position: "desc",
+      },
     });
 
     const newPosition = lastChapter ? lastChapter.position + 1 : 1;
 
     const chapter = await database.chapter.create({
-        data: {
-            title, 
-            courseId: params.courseId,
-            position: newPosition,
-        }
-    })
+      data: {
+        title,
+        courseId: params.courseId,
+        position: newPosition,
+      },
+    });
 
-    return NextResponse.json(chapter)
-
+    return NextResponse.json(chapter);
   } catch (error) {
     console.log("[CHAPTERS]", error);
     return new NextResponse("Internal Error", { status: 500 });

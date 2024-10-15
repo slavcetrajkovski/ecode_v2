@@ -13,7 +13,6 @@ export const getChapter = async ({
   chapterId,
 }: GetChapterProps) => {
   try {
-    // TODO: check for different implementation
     const purchase = await database.purchase.findUnique({
       where: {
         userId_courseId: {
@@ -48,8 +47,7 @@ export const getChapter = async ({
     let attachments: Attachment[] = [];
     let nextChapter: Chapter | null = null;
 
-    // TODO: different implementation here
-    if (purchase) {
+    if (purchase?.isPurchasedConfirmed) {
       attachments = await database.attachment.findMany({
         where: {
           courseId: courseId,
@@ -79,24 +77,23 @@ export const getChapter = async ({
     }
 
     const userProgress = await database.userProgress.findUnique({
-        where: {
-            userId_chapterId: {
-                userId, 
-                chapterId,
-            }
-        }
+      where: {
+        userId_chapterId: {
+          userId,
+          chapterId,
+        },
+      },
     });
 
     return {
-        chapter,
-        course,
-        muxData,
-        attachments,
-        nextChapter,
-        userProgress,
-        purchase
-    }
-
+      chapter,
+      course,
+      muxData,
+      attachments,
+      nextChapter,
+      userProgress,
+      purchase,
+    };
   } catch (error) {
     console.log("[GET_CHAPTERS]", error);
     return {

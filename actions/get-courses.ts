@@ -42,6 +42,7 @@ export const getCourses = async ({
         purchases: {
           where: {
             userId,
+            isPurchasedConfirmed: true,
           },
         },
       },
@@ -53,7 +54,6 @@ export const getCourses = async ({
     const coursesWithProgress: CourseWithProgressWithCategory[] =
       await Promise.all(
         courses.map(async (course: any) => {
-          // TODO: should be changed for the custom purchase implementation
           if (course.purchases.length === 0) {
             return {
               ...course,

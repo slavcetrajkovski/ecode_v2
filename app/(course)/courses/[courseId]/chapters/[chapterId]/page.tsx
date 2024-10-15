@@ -8,6 +8,7 @@ import CourseEnrollButton from "./_components/CourseEnrollButton";
 import { Separator } from "@/components/ui/separator";
 import Preview from "@/components/Preview";
 import { File } from "lucide-react";
+import { CourseProgressButton } from "./_components/CourseProgressButton";
 
 const ChapterIdPage = async ({
   params,
@@ -38,9 +39,10 @@ const ChapterIdPage = async ({
     return redirect("/");
   }
 
-  // TODO: check the logic for the purchase
-  const isLocked = !chapter.isFree && !purchase;
-  const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+  const isLocked = !chapter.isFree && !purchase?.isPurchasedConfirmed;
+  const isPending = !purchase?.isPurchasedConfirmed && purchase !== null;
+  const completeOnEnd =
+    !!purchase?.isPurchasedConfirmed && !userProgress?.isCompleted;
 
   return (
     <div>
@@ -71,12 +73,18 @@ const ChapterIdPage = async ({
         <div>
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
             <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
-            {purchase ? (
-              <div>// TODO: Add CourseProgressButton</div>
+            {purchase?.isPurchasedConfirmed ? (
+              <CourseProgressButton
+                chapterId={params.chapterId}
+                courseId={params.courseId}
+                nextChapterId={nextChapter?.id}
+                isCompleted={!!userProgress?.isCompleted}
+              />
             ) : (
               <CourseEnrollButton
                 courseId={params.courseId}
                 price={course.price!}
+                isPending={isPending}
               />
             )}
           </div>

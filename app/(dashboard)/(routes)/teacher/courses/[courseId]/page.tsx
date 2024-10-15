@@ -83,7 +83,6 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               Пополнете ги сите полиња {completionText}
             </span>
           </div>
-          {/* Add actions */}
           <Actions
             disabled={!isComplete}
             courseId={params.courseId}
