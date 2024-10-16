@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, Compass, Layout, List } from "lucide-react";
+import { BarChart, CircleDollarSign, Compass, Layout, List } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import { usePathname } from "next/navigation";
 
@@ -27,6 +27,11 @@ const teacherRoutes = [
     icon: BarChart,
     label: "Аналитика",
     href: "/teacher/analytics",
+  },
+  {
+    icon: CircleDollarSign,
+    label: "Евиденција",
+    href: "/teacher/purchases",
   },
 ];
 
