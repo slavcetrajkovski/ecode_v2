@@ -9,7 +9,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 const progressVariants = cva("h-full w-full flex-1 bg-primary transition-all", {
   variants: {
     variant: {
-      default: "bg-sky-600", // TODO: Change colors
+      default: "bg-ecode_primary", // TODO: Change colors
       success: "bg-emerald-700",
     },
   },

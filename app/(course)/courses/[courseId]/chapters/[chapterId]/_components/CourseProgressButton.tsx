@@ -47,7 +47,7 @@ export const CourseProgressButton = ({
       toast.success("Поглавјето е успешно завршено");
       router.refresh();
     } catch {
-      toast.error("Грешка"); //TODO: Change this translate
+      toast.error("Грешка при завршување на поглавјето");
     } finally {
       setIsLoading(false);
     }
@@ -63,9 +63,8 @@ export const CourseProgressButton = ({
       variant={isCompleted ? "outline" : "success"}
       className="w-full md:w-auto"
     >
-      {/* TODO: Check the translate on button text */}
-      {isCompleted ? "Не е завршено" : "Означи како завршено"}
-      <Icon className="h-4 w-4 ml-2" />
+      <Icon className="h-4 w-4 mr-2" />
+      {isCompleted ? "Означи како незавршено" : "Означи како завршено"}
     </Button>
   );
 };

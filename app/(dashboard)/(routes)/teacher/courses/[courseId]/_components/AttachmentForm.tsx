@@ -19,6 +19,9 @@ const formSchema = z.object({
   url: z.string().min(1, {
     message: "Немате прикачено документ",
   }),
+  name: z.string().min(1, {
+    message: "Немате прикачено документ",
+  }),
 });
 
 const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
@@ -109,9 +112,9 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
         <div>
           <FileUpload
             endpoint="courseAttachment"
-            onChange={(url) => {
-              if (url) {
-                onSubmit({ url: url });
+            onChange={(url, name) => {
+              if (url && name) {
+                onSubmit({ url: url, name: name });
               }
             }}
           />

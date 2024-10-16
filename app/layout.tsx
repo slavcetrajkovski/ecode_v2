@@ -8,8 +8,8 @@ import { ConfettiProvider } from "@/components/providers/ConfettiProvider";
 const inter = Roboto_Condensed({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
-  title: "eCode",
-  description: "Платформа за учење за студентите од ИТ сферата",
+  title: "eCode MK",
+  description: "Платформа за учење посветена на студентите од ИТ сферата.",
   icons: {
     icon: "./favicon.ico",
   },
@@ -21,7 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          unsafe_disableDevelopmentModeWarnings: true,
+        },
+      }}
+    >
       <html lang="en">
         <body className={inter.className}>
           <ConfettiProvider />

@@ -29,10 +29,10 @@ const CourseEnrollButton = ({
       const response = await axios.post(`/api/courses/${courseId}/enroll`);
 
       //TODO: Change the toast with popup
-      toast.success("Успешна пријава провери го твојот е-меил.");
+      toast.success("Успешна пријава, проверете го вашиот е-меил.");
       router.refresh();
     } catch {
-      toast.error("Веќе сте пријавени за овој курс, ја чекаме вашата уплата");
+      toast.error("Веќе сте пријавени за овој курс, ја чекаме вашата уплата.");
     } finally {
       setIsLoading(false);
     }

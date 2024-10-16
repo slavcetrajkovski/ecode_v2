@@ -8,11 +8,11 @@ interface CourseProgressProps {
 }
 
 const colorByVariant = {
-  default: "text-sky-700", // TODO: Change the color
+  default: "text-ecode_primary/90",
   success: "text-emerald-700",
 };
 
-const sizeByVariant = {
+const sizeByVariant: any = {
   default: "text-sm",
   success: "text-xs",
 };

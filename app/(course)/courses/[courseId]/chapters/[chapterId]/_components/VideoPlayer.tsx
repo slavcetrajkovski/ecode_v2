@@ -54,15 +54,14 @@ const VideoPlayer = ({
         router.refresh();
       }
     } catch {
-      //TODO: Check this translate
-      toast.error("Грешка");
+      toast.error("Грешка при зачувување на завршеното поглавје");
     }
   };
 
   return (
     <div className="relative aspect-video">
       {!isReady && !isLocked && (
-        <div className="absolute inset-0 flex items-center justify-center bg-ecode_primary">
+        <div className="absolute inset-0 flex items-center justify-center bg-ecode_primary/70">
           <Loader2 className="h-8 w-8 animate-spin text-secondary" />
         </div>
       )}
