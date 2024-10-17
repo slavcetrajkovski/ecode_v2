@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Purchase } from "@prisma/client";
+import { Course, Purchase } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { formatPrice } from "@/lib/format";
@@ -25,7 +25,7 @@ const onUpdate = async (purchaseId: string, isPurchasedConfirmed: boolean) => {
   }
 };
 
-export const columnsPurchase: ColumnDef<Purchase>[] = [
+export const columnsPurchase: ColumnDef<Purchase & { course: Course }>[] = [
   {
     accessorKey: "userEmailAddress",
     header: ({ column }) => {
@@ -41,7 +41,8 @@ export const columnsPurchase: ColumnDef<Purchase>[] = [
     },
   },
   {
-    accessorKey: "course.title",
+    accessorFn: (row) => row.course.title,
+    id: "courseTitle",
     header: ({ column }) => {
       return (
         <Button
@@ -68,8 +69,8 @@ export const columnsPurchase: ColumnDef<Purchase>[] = [
       );
     },
     cell: ({ row }) => {
-      const price = parseFloat(row.getValue("course.price") || "0");
-      const formatted = formatPrice(price);
+      const price = row.original.course.price;
+      const formatted = formatPrice(price!);
 
       return <div>{formatted}</div>;
     },

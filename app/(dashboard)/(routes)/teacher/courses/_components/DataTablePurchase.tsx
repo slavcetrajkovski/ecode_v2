@@ -56,9 +56,9 @@ export function DataTablePurchase<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4 justify-between">
+      <div className="flex items-center py-4 justify-start gap-2">
         <Input
-          placeholder="Пребарај курс..."
+          placeholder="Пребарај студент..."
           value={
             (table.getColumn("userEmailAddress")?.getFilterValue() as string) ??
             ""
@@ -67,6 +67,17 @@ export function DataTablePurchase<TData, TValue>({
             table
               .getColumn("userEmailAddress")
               ?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+
+        <Input
+          placeholder="Пребарај курс..."
+          value={
+            (table.getColumn("courseTitle")?.getFilterValue() as string) ?? ""
+          }
+          onChange={(event) =>
+            table.getColumn("courseTitle")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

@@ -10,9 +10,6 @@ const inter = Roboto_Condensed({ subsets: ["latin"], weight: "600" });
 export const metadata: Metadata = {
   title: "eCode MK",
   description: "Платформа за учење посветена на студентите од ИТ сферата.",
-  icons: {
-    icon: "./favicon.ico",
-  },
 };
 
 export default function RootLayout({

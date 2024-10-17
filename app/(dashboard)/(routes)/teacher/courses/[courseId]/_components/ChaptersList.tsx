@@ -28,7 +28,7 @@ const ChaptersList = ({ items, onReorder, onEdit }: ChaptersListProps) => {
 
   useEffect(() => {
     setChapters(items);
-  }, []);
+  }, [items]);
 
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) {
@@ -47,8 +47,8 @@ const ChaptersList = ({ items, onReorder, onEdit }: ChaptersListProps) => {
     setChapters(items);
 
     const bulkUpdatedData = updatedChapters.map((chapter) => ({
-        id: chapter.id,
-        position: items.findIndex((item) => item.id === chapter.id)
+      id: chapter.id,
+      position: items.findIndex((item) => item.id === chapter.id),
     }));
 
     onReorder(bulkUpdatedData);

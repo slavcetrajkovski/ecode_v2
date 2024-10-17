@@ -26,31 +26,35 @@ const ChapterActions = ({
 
   const onPublish = async () => {
     try {
-        setIsLoading(true);
+      setIsLoading(true);
 
-        if(isPublished) {
-          await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/unpublish`);
-          toast.success("Поглавјето е успешно поставено приватно")
-        } else {
-          await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}/publish`);
-          toast.success("Поглавјето е успешно публикувано")
-        }
+      if (isPublished) {
+        await axios.patch(
+          `/api/courses/${courseId}/chapters/${chapterId}/unpublish`
+        );
+        toast.success("Поглавјето е успешно поставено приватно");
+      } else {
+        await axios.patch(
+          `/api/courses/${courseId}/chapters/${chapterId}/publish`
+        );
+        toast.success("Поглавјето е успешно публикувано");
+      }
 
-        router.refresh();
+      router.refresh();
     } catch {
-      toast.error("Грешка при публикување")
+      toast.error("Грешка при публикување");
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const onDelete = async () => {
     try {
       await axios.delete(`/api/courses/${courseId}/chapters/${chapterId}`);
 
       toast.success("Поглавјето е успешно избришано");
-      router.refresh();
       router.push(`/teacher/courses/${courseId}`);
+      router.refresh();
     } catch {
       toast.error("Грешка при бришење");
     } finally {

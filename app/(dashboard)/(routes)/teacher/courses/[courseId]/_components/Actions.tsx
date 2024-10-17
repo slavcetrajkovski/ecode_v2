@@ -46,8 +46,8 @@ const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
       await axios.delete(`/api/courses/${courseId}`);
 
       toast.success("Курсот е успешно избришан");
-      router.refresh();
       router.push(`/teacher/courses`);
+      router.refresh();
     } catch {
       toast.error("Грешка при бришење");
     } finally {
