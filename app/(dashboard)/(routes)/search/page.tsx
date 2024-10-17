@@ -15,11 +15,8 @@ interface SearchPageProps {
 }
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
-  const { userId } = auth();
+  const { userId } = auth() || {};
 
-  if (!userId) {
-    return redirect("/");
-  }
   const categories = await database.category.findMany({
     orderBy: {
       name: "asc",
@@ -27,7 +24,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   });
 
   const courses = await getCourses({
-    userId,
+    userId: userId || null,
     ...searchParams,
   });
 

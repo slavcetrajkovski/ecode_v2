@@ -4,6 +4,8 @@ const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
   "/sign-up(.*)",
   "/api/uploadthing(.*)",
+  "/search",
+  "/search(.*)",
 ]);
 
 export default clerkMiddleware((auth, request) => {

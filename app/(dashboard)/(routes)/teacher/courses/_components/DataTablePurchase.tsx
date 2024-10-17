@@ -38,6 +38,7 @@ export function DataTablePurchase<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [globalFilter, setGlobalFilter] = React.useState("");
 
   const table = useReactTable({
     data,
@@ -54,31 +55,18 @@ export function DataTablePurchase<TData, TValue>({
     },
   });
 
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGlobalFilter(event.target.value);
+    table.setGlobalFilter(event.target.value);
+  };
+
   return (
     <div>
       <div className="flex items-center py-4 justify-start gap-2">
         <Input
-          placeholder="Пребарај студент..."
-          value={
-            (table.getColumn("userEmailAddress")?.getFilterValue() as string) ??
-            ""
-          }
-          onChange={(event) =>
-            table
-              .getColumn("userEmailAddress")
-              ?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-
-        <Input
-          placeholder="Пребарај курс..."
-          value={
-            (table.getColumn("courseTitle")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("courseTitle")?.setFilterValue(event.target.value)
-          }
+          placeholder="Пребарај..."
+          value={globalFilter}
+          onChange={handleFilterChange}
           className="max-w-sm"
         />
       </div>
