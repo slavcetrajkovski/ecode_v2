@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { database } from "@/lib/database";
-import { columns } from "../courses/_components/Columns";
 import { DataTablePurchase } from "../courses/_components/DataTablePurchase";
 import { columnsPurchase } from "../courses/_components/ColumnsPurchase";
 

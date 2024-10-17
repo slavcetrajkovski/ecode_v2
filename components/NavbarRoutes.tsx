@@ -40,9 +40,13 @@ const NavbarRoutes = () => {
           </Link>
         ) : null}
         {userId !== null ? (
-          <UserButton afterSignOutUrl="/search" />
+          <UserButton />
         ) : (
-          <SignInButton />
+          <SignInButton mode="modal">
+            <Button>
+              Најави се
+            </Button>
+          </SignInButton>
         )}
       </div>
     </>

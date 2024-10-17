@@ -9,7 +9,6 @@ import axios from "axios";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 const onUpdate = async (purchaseId: string, isPurchasedConfirmed: boolean) => {
   try {
@@ -94,14 +93,12 @@ export const columnsPurchase: ColumnDef<Purchase & { course: Course }>[] = [
       let initialStatus: boolean =
         row.getValue("isPurchasedConfirmed") || false;
       const [isConfirmed, setIsConfirmed] = useState(initialStatus);
-      const router = useRouter();
 
       const handleToggle = async (checked: boolean) => {
         const updatedPurchase = await onUpdate(purchaseId, checked);
         if (updatedPurchase) {
           setIsConfirmed(checked);
           toast.success("Успешно променет статус на уплата");
-          router.refresh();
         } else {
           toast.error("Грешка при промена на статус на уплата");
         }
