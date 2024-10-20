@@ -1,6 +1,6 @@
 import NavbarRoutes from "@/components/NavbarRoutes";
 import { Chapter, Course, UserProgress } from "@prisma/client";
-import React from "react";
+import React, { Suspense } from "react";
 import CourseMobileSidebar from "./CourseMobileSidebar";
 
 interface CourseNavbarProps {
@@ -15,10 +15,12 @@ interface CourseNavbarProps {
 const CourseNavbar = ({ course, progressCount }: CourseNavbarProps) => {
   return (
     <div className="p-4 border-b h-full flex items-center bg-white shadow-sm">
-        <CourseMobileSidebar course={course} progressCount={progressCount}/>
+      <CourseMobileSidebar course={course} progressCount={progressCount} />
+      <Suspense>
         <NavbarRoutes />
+      </Suspense>
     </div>
-  )
+  );
 };
 
 export default CourseNavbar;
