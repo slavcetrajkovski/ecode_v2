@@ -5,7 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ToasterProvider from "@/components/providers/ToasterProvider";
 import { ConfettiProvider } from "@/components/providers/ConfettiProvider";
 
-const inter = Roboto_Condensed({ subsets: ["latin"], weight: "600" });
+const inter = Roboto_Condensed({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "eCode MK",
